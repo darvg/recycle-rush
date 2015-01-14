@@ -6,5 +6,6 @@ package org.usfirst.frc.team115.recyclerush;
  * Naming scheme can be found in the Electrical 2015 Excel Doc 
  */
 public class RobotMap {
-    
+    public static final int GYRO = 0;
+    public static final int GYRO_TEMP = 0;
 }

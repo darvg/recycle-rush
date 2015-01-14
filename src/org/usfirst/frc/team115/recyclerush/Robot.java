@@ -1,9 +1,12 @@
 
 package org.usfirst.frc.team115.recyclerush;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * @author Lee Mracek
@@ -12,8 +15,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot {
 
+	private Gyro gyro;
+	private AnalogInput temp; //no wrapper for temperature
     public void robotInit() {
-
+    	// initialize gyro and gyro temperature
+    	gyro = new Gyro(RobotMap.GYRO);
+    	temp = new AnalogInput(RobotMap.GYRO_TEMP);
     }
 	
 	public void disabledPeriodic() {
@@ -38,6 +45,10 @@ public class Robot extends IterativeRobot {
 
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("Gyro Rate", gyro.getRate());
+        SmartDashboard.putNumber("Gyro Angle", gyro.getAngle());
+        SmartDashboard.putNumber("Gyro Raw Temp", temp.getVoltage());
+        SmartDashboard.putNumber("Gyro Temp (?)", ((temp.getVoltage() - 2.5) / 0.009) + 25);
     }
     
     public void testPeriodic() {
