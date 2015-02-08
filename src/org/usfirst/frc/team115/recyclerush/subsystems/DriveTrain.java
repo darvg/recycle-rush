@@ -1,7 +1,7 @@
 /**
  * This is the drive train for the robot for the competition.
  *
- * @author Heather Baker
+ * @author MVRT
  */
 
 package org.usfirst.frc.team115.recyclerush.subsystems;
