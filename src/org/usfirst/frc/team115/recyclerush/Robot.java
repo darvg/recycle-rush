@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team115.recyclerush.subsystems.Claw;
 import org.usfirst.frc.team115.recyclerush.subsystems.DriveTrain;
 import org.usfirst.frc.team115.recyclerush.subsystems.Grabber;
-import org.usfirst.frc.team115.recyclerush.subsystems.Roller;
 
 /**
  * @author MVRT
@@ -20,14 +19,12 @@ public class Robot extends IterativeRobot {
     public static Claw claw;
     public static Grabber grabber;
     public static OI oi;
-    public static Roller roller;
 
     public Robot() {
         drive = new DriveTrain();
         claw = new Claw();
         grabber = new Grabber();
         oi = new OI();
-        roller  = new Roller();
     }
 
     public void disabledPeriodic() {

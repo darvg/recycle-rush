@@ -1,10 +1,12 @@
 package org.usfirst.frc.team115.recyclerush;
 
 import org.usfirst.frc.team115.recyclerush.commands.CloseClaw;
+import org.usfirst.frc.team115.recyclerush.commands.CloseGrabber;
 import org.usfirst.frc.team115.recyclerush.commands.OpenClaw;
 import org.usfirst.frc.team115.recyclerush.commands.AutoIntake;
 import org.usfirst.frc.team115.recyclerush.commands.OpenArm;
 import org.usfirst.frc.team115.recyclerush.commands.CloseArm;
+import org.usfirst.frc.team115.recyclerush.commands.OpenGrabber;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -36,9 +38,9 @@ public class OI {
 	private void initXboxController(){
 		
 		JoystickButton lb = new JoystickButton(xbox, RobotMap.XBOX_LB);
-		lb.whenPressed(new OpenClaw());
+		lb.whenPressed(new OpenGrabber());
 		JoystickButton rb = new JoystickButton(xbox, RobotMap.XBOX_RB);
-		rb.whenPressed(new CloseClaw());
+		rb.whenPressed(new CloseGrabber());
 	
 		XboxTrigger lt = new XboxTrigger(xbox, RobotMap.XBOX_LT, 0.8);
 		XboxTrigger rt = new XboxTrigger(xbox, RobotMap.XBOX_RT, 0.8);
@@ -46,6 +48,10 @@ public class OI {
 		//TODO: Finish CloseArm and OpenArm
 		lt.whenActive(new CloseArm());
 		rt.whenActive(new OpenArm());
+		
+		JoystickButton y = new JoystickButton(xbox, RobotMap.XBOX_Y);
+		y.toggleWhenPressed(new OpenClaw());
+		y.toggleWhenActive(new CloseClaw());
 		
 		//TODO: Finish AutoIntake.java
 		JoystickButton ab =  new JoystickButton(xbox, RobotMap.XBOX_A);
